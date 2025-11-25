@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>DITF</title>
+<link rel="icon" type="image/png" href="favicon.png">
+
+<style>
+.bg {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: url("https://i.imgur.com/jwp24bW.png");
+    background-size: cover;
+    background-position: center;
+    z-index: -2; /* behind everything */
+}
+
+.extra-img {
+    position: fixed;    /* fixed relative to viewport */
+    top: -90px;         /* change this to move vertically */
+    left: 447px;        /* change this to move horizontally */
+    width: 900px;       /* adjust size */
+    height: auto;
+    z-index: -2;        /* behind video but above background */
+}
+
+.video-container {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh; /* full viewport height */
+    z-index: 1; /* above background */
+}
+
+#bg-video {
+    max-width: 80%;
+    max-height: 80%;
+    width: auto;
+    height: auto;
+    
+    /* Dual color gradient border for Hiro & Zero Two */
+    border: 6px solid transparent; 
+    border-image: linear-gradient(to right, #00bfff, #ff2d55) 1;
+    border-radius: 7px;
+
+    /* Glowing shadow effect matching colors */
+    box-shadow: 
+        0 0 20px #00bfff,   /* blue glow */
+        0 0 40px #ff2d55;   /* red glow */
+    
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+#bg-video:hover {
+    transform: scale(1.03);
+    box-shadow: 
+        0 0 25px #00bfff, 
+        0 0 50px #ff2d55;
+}
+</style>
+
+</head>
+<body>
+
+<div class="bg"></div>
+
+<img src="https://i.imgur.com/UApcZ9R.png" class="extra-img">
+
+<div class="video-container">
+    <video id="bg-video" controls>
+        <source src="ditf.mp4" type="video/mp4">
+        Your browser does not support HTML5 video.
+    </video>
+</div>
+
+</body>
+</html>
