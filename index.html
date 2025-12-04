@@ -9,30 +9,42 @@
     position: fixed;
     top: 0;
     left: 0;
-    width: 100%;
-    height: 100%;
+    width: 100vw;
+    height: 100vh;
+
     background-image: url("https://i.imgur.com/jwp24bW.png");
     background-size: cover;
     background-position: center;
-    z-index: -2; /* behind everything */
+    background-repeat: no-repeat;
+
+    z-index: -2;
+}
+
+@media (max-width: 768px) {
+    .bg {
+        background-size: contain;        /* show the whole image */
+        background-position: top center; /* center nicely */
+        background-color: black;         /* fill empty space */
+    }
 }
 
 .extra-img {
-    position: fixed;    /* fixed relative to viewport */
-    top: -90px;         /* change this to move vertically */
-    left: 447px;        /* change this to move horizontally */
-    width: 900px;       /* adjust size */
+    position: fixed;
+    top: -90px;
+    left: 447px;
+    width: 900px;
     height: auto;
-    z-index: -2;        /* behind video but above background */
+    z-index: -2;
 }
+
 
 .video-container {
     position: relative;
     display: flex;
     justify-content: center;
     align-items: center;
-    height: 100vh; /* full viewport height */
-    z-index: 1; /* above background */
+    height: 100vh;
+    z-index: 1;
 }
 
 #bg-video {
@@ -41,15 +53,13 @@
     width: auto;
     height: auto;
     
-    /* Dual color gradient border for Hiro & Zero Two */
     border: 6px solid transparent; 
     border-image: linear-gradient(to right, #00bfff, #ff2d55) 1;
     border-radius: 7px;
 
-    /* Glowing shadow effect matching colors */
     box-shadow: 
-        0 0 20px #00bfff,   /* blue glow */
-        0 0 40px #ff2d55;   /* red glow */
+        0 0 20px #00bfff,
+        0 0 40px #ff2d55;
     
     transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
@@ -60,6 +70,44 @@
         0 0 25px #00bfff, 
         0 0 50px #ff2d55;
 }
+
+@media (max-width: 768px) {
+
+    .bg {
+        background-size: cover;
+        background-position: center;
+    }
+
+    .extra-img {
+        top: 0;
+        left: 50%;
+        transform: translateX(-50%);
+        width: 90vw;
+    }
+
+    .video-container {
+        height: auto;
+        padding: 20px 0;
+    }
+
+    #bg-video {
+        width: 95vw;
+        max-height: 60vh;
+        border-width: 4px;
+    }
+}
+
+@media (max-width: 768px) {
+    .extra-img {
+        top: 0;
+        left: 50%;
+        transform: translateX(-50%);
+        width: 85vw;
+        height: auto;
+        z-index: 0; /* ensures it shows on mobile */
+    }
+}
+
 </style>
 
 </head>
@@ -72,7 +120,6 @@
 <div class="video-container">
     <video id="bg-video" controls>
         <source src="ditf.mp4" type="video/mp4">
-        Your browser does not support HTML5 video.
     </video>
 </div>
 
